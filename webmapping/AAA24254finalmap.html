@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -69,6 +69,7 @@
                 'https://disaportaldata.gsi.go.jp/raster/05_dosekiryukeikaikuiki/{z}/{x}/{y}.png',
                 {
                     attribution: '© ハザードマップポータルサイト',
+                    opacity: 0.4,
                     maxZoom: 17,
                     minZoom: 2
                 }
@@ -77,9 +78,12 @@
 
             var LayerControl = L.control.layers({
                 "地理院地図（標準）": chiriinLayer,
-                "OpenStreetMap": backgroundLayer,
-                "ハザードマップ（土石流）":dosekiLayer
-            }).addTo(map);
+                "OpenStreetMap": backgroundLayer
+                },
+                {
+                    "ハザードマップ（土石流）": dosekiLayer
+                }
+            ).addTo(map);
 
             //スケールバー
             L.control.scale().addTo(map);
