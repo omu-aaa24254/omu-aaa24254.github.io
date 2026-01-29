@@ -76,12 +76,24 @@
             );
             map.addLayer(dosekiLayer);
 
+            //ハザードマップ（地すべり）
+                        const jisuberiLayer = L.tileLayer(
+                ' 	https://disaportaldata.gsi.go.jp/raster/05_jisuberikeikaikuiki/{z}/{x}/{y}.png',
+                {
+                    opacity: 0.4,
+                    maxZoom: 17,
+                    minZoom: 2
+                }
+            );
+            map.addLayer(jisuberiLayer);
+
             var LayerControl = L.control.layers({
                 "地理院地図（標準）": chiriinLayer,
                 "OpenStreetMap": backgroundLayer
                 },
                 {
-                    "ハザードマップ（土石流）": dosekiLayer
+                    "ハザードマップ（土石流）": dosekiLayer,
+                    "ハザードマップ（地すべり）": jisuberiLayer
                 }
             ).addTo(map);
 
